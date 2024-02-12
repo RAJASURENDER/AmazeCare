@@ -50,6 +50,7 @@ namespace AmazeCare.Controllers
             return doctor;
         }
 
+<<<<<<< HEAD
 
         /// <summary>
         /// Adds a doctor to the system.
@@ -64,6 +65,15 @@ namespace AmazeCare.Controllers
             doctor = await _adminService.AddDoctor(doctor);
             return doctor;
         }
+=======
+        //[Route("Add Doctor")]
+        //[HttpPost]
+        //public async Task<Doctors> PostDoctor(Doctors doctor)
+        //{
+        //    doctor = await _adminService.AddDoctor(doctor);
+        //    return doctor;
+        //}
+>>>>>>> dd4b272acb48671b91d7ab6cd129ae408cb07a26
 
 
         /// <summary>

@@ -44,6 +44,12 @@ namespace AmazeCare.Services
 
         }
 
+        /// <summary>
+        /// Method for Login
+        /// </summary>
+        /// <param name="user">Object of user</param>
+        /// <returns>User Object</returns>
+        /// <exception cref="InvalidUserException">Exception for invalid user</exception>
         public async Task<LoginUserDTO> Login(LoginUserDTO user)
         {
             try
@@ -84,6 +90,12 @@ namespace AmazeCare.Services
                 throw;
             }
         }
+        /// <summary>
+        /// Method for comparing passwords
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="userPassword"></param>
+        /// <returns>true or false</returns>
         private bool ComparePasswords(byte[] password, byte[] userPassword)
         {
             for (int i = 0; i < password.Length; i++)
@@ -101,6 +113,11 @@ namespace AmazeCare.Services
             return userpassword;
         }
 
+        /// <summary>
+        /// Method for Registering Patient
+        /// </summary>
+        /// <param name="user">Object of User</param>
+        /// <returns>User Object</returns>
         public async Task<LoginUserDTO> RegisterPatient(RegisterPatientDTO user)
         {
             try
@@ -123,6 +140,11 @@ namespace AmazeCare.Services
             }
         }
 
+        /// <summary>
+        /// Method for Registering Doctor
+        /// </summary>
+        /// <param name="user">Object of User</param>
+        /// <returns>User object</returns>
         public async Task<LoginUserDTO> RegisterDoctor(RegisterDoctorDTO user)
         {
             try
@@ -144,7 +166,10 @@ namespace AmazeCare.Services
                 throw;
             }
         }
-
+        /// <summary>
+        /// Method for Generating Random Key
+        /// </summary>
+        /// <returns>Generated Random key</returns>
         private static byte[] GenerateRandomKey()
         {
             using (var rng = new RNGCryptoServiceProvider())

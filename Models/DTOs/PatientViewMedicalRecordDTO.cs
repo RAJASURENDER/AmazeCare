@@ -2,6 +2,9 @@
 {
     public class PatientViewMedicalRecordDTO
     {
+        /// <summary>
+        /// DTO for View MedicalRecord BY Patient with necesary details mentioned below
+        /// </summary>
         public string PatientName { get; set; } = string.Empty;
 
         public string DoctorName { get; set; } = string.Empty;

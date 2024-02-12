@@ -27,17 +27,30 @@ namespace AmazeCare.Models
         [JsonIgnore]
         public ICollection<Appointments>? Appointments { get; set; }
 
-      
 
 
 
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
 
 
         public Doctors()
         {
             
         }
+
+        /// <summary>
+        /// Parameterized Constructor
+        /// </summary>
+        /// <param name="doctorId">doctorId in int</param>
+        /// <param name="doctorName"> doctorName in string</param>
+        /// <param name="speciality"> speciality in string</param>
+        /// <param name="experience">Experience in int</param>
+        /// <param name="qualification"> Qualification in string</param>
+        /// <param name="designation">designation in string</param>
+        /// <param name="username"> username in string</param>
 
         public Doctors(int doctorId, string doctorName, string speciality, float experience, string qualification, string designation, string username)
         {
@@ -60,6 +73,13 @@ namespace AmazeCare.Models
             Designation = designation;
             Username = username;
         }
+
+
+        /// <summary>
+        /// Used to compare the Doctors object
+        /// </summary>
+        /// <param name="other">Object of Doctors</param>
+        /// <returns>True if Doctor Id is present else False</returns>
 
         public bool Equals(Doctors? other)
         {

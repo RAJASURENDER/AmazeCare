@@ -63,11 +63,19 @@ namespace AmazeCare.Controllers
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Updates the doctor id in an appointment.
         /// </summary>
         /// <param name="appointmentDTO">The appointment data transfer object.</param>
         /// <returns>The updated appointment.</returns>
 
+=======
+        /// This method is used to update DoctorId in Appointments
+        /// </summary>
+        /// <param name="appointmentDTO"></param>
+        /// <returns> Appointment with updated DoctorId</returns>
+     
+>>>>>>> dd4b272acb48671b91d7ab6cd129ae408cb07a26
         [Authorize(Roles = "Admin")]
         [Route("/Update DoctorId In Appointments")]
         [HttpPut]
@@ -113,11 +121,10 @@ namespace AmazeCare.Controllers
         
         [Authorize(Roles ="Patient")]
         [Route("/Cancel Appointment")] //patient
-        [HttpDelete]
-        public async Task<Appointments> DeleteAppointment(int id)
+        [HttpPut]
+        public async Task<Appointments> CancelAppointment(int id)
         {
-            var appointment = await _appointmentAdminService.DeleteAppointment(id);
-
+            var appointment = await _appointmentAdminService.CancelAppointment(id);
             return appointment;
         }
 

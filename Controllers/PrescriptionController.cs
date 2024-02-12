@@ -38,6 +38,7 @@ namespace AmazeCare.Controllers
         /// <param name="id">The id of the prescription record.</param>
         /// <returns>The prescription record</returns>
 
+<<<<<<< HEAD
         [Authorize(Roles = "Patient")]
         [Route("/View Prescription  By RecordId")]
         [HttpGet]
@@ -53,6 +54,8 @@ namespace AmazeCare.Controllers
         /// <param name="prescriptions">The prescription details.</param>
         /// <returns>Added prescription details</returns>
 
+=======
+>>>>>>> dd4b272acb48671b91d7ab6cd129ae408cb07a26
         [Authorize(Roles = "Doctor")]
         [Route("Add Prescription")]
         [HttpPost]
@@ -76,6 +79,17 @@ namespace AmazeCare.Controllers
         {
             var prescription= await _prescriptionService.UpdatePrescription(prescriptions);
             return prescription;
+        }
+
+
+        [Authorize(Roles = "Patient,Doctor")]
+        [Route("/View Prescription  By RecordId")]
+ 
+        [HttpGet]
+        public async Task<List<Prescriptions>> GetPrescriptionsByRecordId(int recordId)
+        {
+            var prescriptions = await _prescriptionService.GetPrescriptionsByRecordId(recordId);
+            return prescriptions;
         }
     }
 }
