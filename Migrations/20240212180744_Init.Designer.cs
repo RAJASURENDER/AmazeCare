@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AmazeCare.Migrations
 {
     [DbContext(typeof(RequestTrackerContext))]
-    [Migration("20240212071402_INIT")]
-    partial class INIT
+    [Migration("20240212180744_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

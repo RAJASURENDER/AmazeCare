@@ -56,7 +56,7 @@ namespace AmazeCare.Controllers
         /// <param name="patient">The patient details.</param>
         /// <returns>The added patient details.</returns>
 
-<<<<<<< HEAD
+
         [Authorize(Roles = "Admin")]
         [Route("Add Patient")]
         [HttpPost]
@@ -65,17 +65,7 @@ namespace AmazeCare.Controllers
             patient = await _adminService.AddPatient(patient);
             return patient;
         }
-=======
-        //[Authorize(Roles = "Admin")]
-        //[Route("Add Patient")]
 
-        //[HttpPost]
-        //public async Task<Patients> PostPatient(Patients patient)
-        //{
-        //    patient = await _adminService.AddPatient(patient);
-        //    return patient;
-        //}
->>>>>>> dd4b272acb48671b91d7ab6cd129ae408cb07a26
 
         /// <summary>
         /// Updates the age of the patient.
