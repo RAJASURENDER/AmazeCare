@@ -97,7 +97,7 @@ namespace AmazeCare.Controllers
            doctorDTO.Qualification);
             return doctor;
         }
-        // <summary>
+        /// <summary>
         /// Updates a doctor's information.
         /// </summary>
         /// <param name="doctors">The updated doctor information.</param>

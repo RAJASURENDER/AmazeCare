@@ -20,7 +20,7 @@ namespace AmazeCare.Controllers
             _appointmentUserService = appointmentUserService;
         }
 
-        // <summary>
+        /// <summary>
         /// Retrieve all appointments (for Admin only).
         /// </summary>
         /// <returns>All the appointments/returns>
@@ -34,10 +34,10 @@ namespace AmazeCare.Controllers
             var appointment = await _appointmentAdminService.GetAppointmentList();
             return appointment;
         }
-        // <summary>
+        /// <summary>
         /// Gets an appointment by its id.
         /// </summary>
-        /// <param name="id">The id of the appointment to get.</param>
+        /// <param name="id">The ID of the doctor to retrieve.</param>
         /// <returns>The appointment with the specified id.</returns>
         [Authorize]
         [Route("/View Appointment By AppointmentId")]
