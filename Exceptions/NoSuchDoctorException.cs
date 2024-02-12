@@ -5,8 +5,11 @@ namespace AmazeCare.Exceptions
     [Serializable]
     public class NoSuchDoctorException : Exception
     {
-        
 
+        /// <summary>
+        /// Represents an exception thrown when no doctor with the given ID is found.
+        /// </summary>
+        
         string message;
         public NoSuchDoctorException()
         {
