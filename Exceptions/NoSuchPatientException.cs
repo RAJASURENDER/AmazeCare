@@ -3,8 +3,11 @@
 namespace AmazeCare.Exceptions
 {
     [Serializable]
-    internal class NoSuchPatientException : Exception
+    public class NoSuchPatientException : Exception
     {
+        /// <summary>
+        /// Represents an exception thrown when no patient with the given ID is found.
+        /// </summary>
 
         string message;
         public NoSuchPatientException()
