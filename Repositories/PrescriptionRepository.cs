@@ -85,7 +85,11 @@ namespace AmazeCare.Repositories
             return prescriptions;
         }
 
-<<<<<<< HEAD
+        /// <summary>
+        /// Retrieves all prescriptions by RecordId
+        /// </summary>
+        /// <param name="recordId">Record id in int</param>
+        /// <returns> A list of prescriptions</returns>
         public async Task<List<Prescriptions>> GetByRecordIdAsync(int recordId)
         {
             var prescriptions = _context.Prescriptions
@@ -94,13 +98,13 @@ namespace AmazeCare.Repositories
 
             return prescriptions;
         }
-=======
+
         /// <summary>
         /// Updates the information of a prescription in the database.
         /// </summary>
         /// <param name="item">The prescription object with updated information.</param>
         /// <returns>The updated prescription.</returns>
->>>>>>> a9cf6884d5fa6a42752241f1b0486319d56b8532
+
 
         public async Task<Prescriptions> Update(Prescriptions item)
         {
