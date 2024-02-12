@@ -65,11 +65,7 @@ namespace AmazeCare.Controllers
         /// <summary>
         /// Updates the doctor id in an appointment.
         /// </summary>
-        /// <param name="appointmentDTO">The appointment data transfer object.</param>
-        /// <returns>The updated appointment.</returns>
-
-        /// This method is used to update DoctorId in Appointments
-        /// </summary>
+        
         /// <param name="appointmentDTO"></param>
         /// <returns> Appointment with updated DoctorId</returns>
      
