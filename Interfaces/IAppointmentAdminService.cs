@@ -5,6 +5,7 @@ namespace AmazeCare.Interfaces
 {
     public interface IAppointmentAdminService :IAppointmentUserService
     {
+       
         public Task<List<Appointments>> GetAppointmentList();
         public Task<Appointments> AddAppointment(Appointments appointment);
         public Task<Appointments> UpdateAppointmentPatient(int appointmentId, int patientId);

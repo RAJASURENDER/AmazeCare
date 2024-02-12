@@ -17,6 +17,12 @@ namespace AmazeCare.Services
             _keyString = configuration["SecretKey"].ToString();
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_keyString));
         }
+
+        /// <summary>
+        /// Method to generate Token
+        /// </summary>
+        /// <param name="user"> Object of user</param>
+        /// <returns>FGenerated Token</returns>
         public async Task<string> GenerateToken(LoginUserDTO user)
         {
             string token = string.Empty;

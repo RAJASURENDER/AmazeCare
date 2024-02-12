@@ -6,6 +6,7 @@ namespace AmazeCare.Mappers
     public class RegisterToDoctor
     {
         Doctors doctor;
+        
         public RegisterToDoctor(RegisterDoctorDTO register)
         {
             doctor = new Doctors();

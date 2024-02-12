@@ -105,7 +105,7 @@ namespace AmazeCare.Services
         /// </summary>
         /// <param name="item">Object of Doctor</param>
         /// <returns>Doctor's Object</returns>
-        /// <exception cref="NoSuchDoctorException"> When there is no doctor</exception>
+        /// <exception cref="NoSuchDoctorException">Excepption When there is no doctor</exception>
         public async Task<Doctors> UpdateDoctor(Doctors item)
         {
             Doctors existingDoctor = await _repo.GetAsync(item.DoctorId);
