@@ -3,9 +3,11 @@
 namespace AmazeCare.Exceptions
 {
     [Serializable]
-    internal class NoSuchAppointmentException : Exception
+    public class NoSuchAppointmentException : Exception
     {
-        
+        /// <summary>
+        /// Represents an exception thrown when no appointment with the given ID is found.
+        /// </summary>
 
         string message;
         public NoSuchAppointmentException()

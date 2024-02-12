@@ -10,12 +10,25 @@ namespace AmazeCare.Repositories
     {
         RequestTrackerContext _context;
         private readonly ILogger<AppointmentRepository> _logger;
+
+        /// <summary>
+        /// Initializes a new instance of the AppointmentRepository class with the specified database context.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        /// <param name="logger">The logger instance for logging.</param>
+
         public AppointmentRepository(RequestTrackerContext context,
        ILogger<AppointmentRepository> logger)
         {
             _context = context;
             _logger = logger;
         }
+
+        /// <summary>
+        /// Adds a new appointment to the database.
+        /// </summary>
+        /// <param name="item">The appointment to be added.</param>
+        /// <returns>The added appointment.</returns>
 
         public async Task<Appointments> Add(Appointments item)
         {
@@ -24,6 +37,13 @@ namespace AmazeCare.Repositories
             _logger.LogInformation("Appointment added " + item.AppointmentId);
             return item;
         }
+
+        /// <summary>
+        /// Deletes an appointment from the database.
+        /// </summary>
+        /// <param name="key">The ID of the appointment to be deleted.</param>
+        /// <returns>The deleted appointment.</returns>
+        
         public async Task<Appointments> Delete(int key)
         {
             var appointment = await GetAsync(key);
@@ -32,6 +52,14 @@ namespace AmazeCare.Repositories
             _logger.LogInformation("Appointment deleted " + key);
             return appointment;
         }
+
+        /// <summary>
+        /// Retrieves an appointment from the database by its ID.
+        /// </summary>
+        /// <param name="key">The ID of the appointment to retrieve.</param>
+        /// <returns>The appointment with the specified ID.</returns>
+        /// <exception cref="NoSuchAppointmentException">Thrown when no appointment with the specified ID is found.</exception>
+
         public async Task<Appointments> GetAsync(int key)
         {
             var appointments = await GetAsync();
@@ -42,6 +70,12 @@ namespace AmazeCare.Repositories
             }
             throw new NoSuchAppointmentException();
         }
+
+        /// <summary>
+        /// Retrieves all appointments from the database.
+        /// </summary>
+        /// <returns>A list of all appointments.</returns>
+
         public async Task<List<Appointments>> GetAsync()
         {
             var appointment = _context.Appointments.Include(e => e.Patients).
@@ -49,7 +83,11 @@ namespace AmazeCare.Repositories
             return appointment;
         }
 
-
+        /// <summary>
+        /// Updates an existing appointment in the database.
+        /// </summary>
+        /// <param name="item">The updated appointment object.</param>
+        /// <returns>The updated appointment object.</returns>
 
         public async Task<Appointments> Update(Appointments item)
         {
