@@ -19,10 +19,22 @@ namespace AmazeCare.Models
         [JsonIgnore]
         public MedicalRecords? MedicalRecords { get; set; }
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public Prescriptions()
         {
             
         }
+
+        /// <summary>
+        /// Parameterized Constructor
+        /// </summary>
+        /// <param name="prescriptionId"> precriptionId in int</param>
+        /// <param name="recordId"> recordId in int</param>
+        /// <param name="medicine"> medicine in string</param>
+        /// <param name="instructions"> instructions in string</param>
+        /// <param name="dosage">dosage in string</param>
 
         public Prescriptions(int prescriptionId, int recordId, string medicine, string instructions, string dosage)
         {
@@ -40,6 +52,12 @@ namespace AmazeCare.Models
             Instructions = instructions;
             Dosage = dosage;
         }
+
+        /// <summary>
+        /// Used to compare the Prescriptions object
+        /// </summary>
+        /// <param name="other">Object of Prescriptions</param>
+        /// <returns>True if PrescriptionId is present else False</returns>
         public bool Equals(Prescriptions? other)
         {
             var prescription = other ?? new Prescriptions();

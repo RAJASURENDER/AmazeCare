@@ -12,11 +12,24 @@ namespace AmazeCare.Services
         {
             _repository = repository;
         }
+
+        /// <summary>
+        /// Method for Adding Patient
+        /// </summary>
+        /// <param name="patient">Object Of Patients</param>
+        /// <returns>Patients Object</returns>
         public async Task<Patients> AddPatient(Patients patient)
         {
             patient = await _repository.Add(patient);
             return patient;
         }
+
+        /// <summary>
+        /// Method to delete Patient
+        /// </summary>
+        /// <param name="id">Patient Id in int</param>
+        /// <returns>Patients Object</returns>
+        /// <exception cref="NoSuchPatientException">When Patient is not present</exception>
         public async Task<Patients> DeletePatient(int id)
         {
             var patient = await GetPatient(id);
@@ -27,16 +40,34 @@ namespace AmazeCare.Services
             }
             throw new NoSuchPatientException();
         }
+
+        /// <summary>
+        /// Method To get patient by id
+        /// </summary>
+        /// <param name="id">PatientId in int</param>
+        /// <returns>Patient Object</returns>
         public async Task<Patients> GetPatient(int id)
         {
             var patient = await _repository.GetAsync(id);
             return patient;
         }
+
+        /// <summary>
+        /// Method to get all Patients
+        /// </summary>
+        /// <returns>Patients Object</returns>
         public async Task<List<Patients>> GetPatientList()
         {
             var patients = await _repository.GetAsync();
             return patients;
         }
+
+        /// <summary>
+        /// Method to Update Patient Age
+        /// </summary>
+        /// <param name="id">Patientid in int</param>
+        /// <param name="age">Age in int</param>
+        /// <returns>Patients Object</returns>
         public async Task<Patients> UpdatePatientAge(int id, int age)
         {
             var patient = await _repository.GetAsync(id);
@@ -49,7 +80,12 @@ namespace AmazeCare.Services
             return null;
         }
 
-
+        /// <summary>
+        /// Method to Update Patient Mobile Number
+        /// </summary>
+        /// <param name="id">PatientId in int</param>
+        /// <param name="mobile">Patient Mobile number in string</param>
+        /// <returns></returns>
         public async Task<Patients> UpdatePatientMobile(int id, string mobile)
         {
             var patient = await _repository.GetAsync(id);

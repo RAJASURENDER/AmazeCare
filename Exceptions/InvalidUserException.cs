@@ -5,20 +5,13 @@ namespace AmazeCare.Exceptions
     [Serializable]
     internal class InvalidUserException : Exception
     {
+
+
+        string message;
         public InvalidUserException()
         {
+            message = "NO User with the given id";
         }
-
-        public InvalidUserException(string? message) : base(message)
-        {
-        }
-
-        public InvalidUserException(string? message, Exception? innerException) : base(message, innerException)
-        {
-        }
-
-        protected InvalidUserException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
+        public override string Message => message;
     }
 }

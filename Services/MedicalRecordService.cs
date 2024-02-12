@@ -29,19 +29,33 @@ namespace AmazeCare.Services
 
         }
 
-
+        /// <summary>
+        /// Method for Adding Medical Record
+        /// </summary>
+        /// <param name="medicalRecords">Object of medicalRecords</param>
+        /// <returns>medicalRecords Object</returns>
         public async Task<MedicalRecords> AddMedicalRecord(MedicalRecords medicalRecords)
         {
             medicalRecords = await _repo.Add(medicalRecords);
             return medicalRecords;
         }
 
+        /// <summary>
+        /// Method to get medical Record By RecordId
+        /// </summary>
+        /// <param name="id">MedicalRecordId in int</param>
+        /// <returns>medicalRecords Object</returns>
         public async Task<MedicalRecords> GetMedicalRecordById(int id)
         {
             var medicalRecords = await _repo.GetAsync(id);
             return medicalRecords;
         }
 
+
+        /// <summary>
+        /// Method to get All the MedicalRecords
+        /// </summary>
+        /// <returns>MedicalRecords Object</returns>
         public async Task<List<MedicalRecords>> GetMedicalRecordList()
         {
 
@@ -49,13 +63,19 @@ namespace AmazeCare.Services
             return medicalRecords;
         }
 
+
+        /// <summary>
+        /// Method to get MedicalRecord by AppointmentId
+        /// </summary>
+        /// <param name="appointmentId">AppointmentId in int</param>
+        /// <returns>MedicalRecords Object</returns>
         public async Task<List<PatientViewMedicalRecordDTO>> GetMedicalRecordByAppointment(int appointmentId)
         {
             var medicalRecords = await _repo.GetAsync();
 
             medicalRecords = medicalRecords.Where(a => a.AppointmentId == appointmentId).ToList();
 
-            // Create a list to store the details
+            
             List<PatientViewMedicalRecordDTO> medicalRecordDetailsList = new List<PatientViewMedicalRecordDTO>();
 
             foreach (var medicalRecord in medicalRecords)
@@ -65,11 +85,7 @@ namespace AmazeCare.Services
                 {
                     var patient = await _patientService.GetPatient(appointment.PatientId);
                     var doctor = await _doctorService.GetDoctor(appointment.DoctorId);
-
-
-
-
-                    // Create a DTO (Data Transfer Object) to store the details
+  
                     var medicalRecordDetails = new PatientViewMedicalRecordDTO
                     {
 
@@ -92,18 +108,22 @@ namespace AmazeCare.Services
             return medicalRecordDetailsList;
         }
 
-
+        /// <summary>
+        /// Method to get MedicalRecord By PatientId
+        /// </summary>
+        /// <param name="patientId">PatientId in int</param>
+        /// <returns>MedicalRecords Object</returns>
         public async Task<List<PatientViewMedicalRecordDTO>> GetMedicalRecordByPatientId(int patientId)
         {
-            // Retrieve all appointments for the patient
+          
             var appointments = await _appointmentService.GetAppointmentByPatient(patientId);
 
-            // Create a list to store the details
+
             List<PatientViewMedicalRecordDTO> medicalRecordDetailsList = new List<PatientViewMedicalRecordDTO>();
 
             foreach (var appointment in appointments)
             {
-                // Retrieve all medical records associated with each appointment
+             
                 var medicalRecords = await GetMedicalRecordByAppointment(appointment.AppointmentId);
 
                 foreach (var medicalRecord in medicalRecords)
@@ -112,7 +132,7 @@ namespace AmazeCare.Services
                     var doctor = await _doctorService.GetDoctor(appointment.DoctorId);
                    
 
-                    // Create a DTO (Data Transfer Object) to store the details
+             
                     var medicalRecordDetails = new PatientViewMedicalRecordDTO
                     {
                         PatientName = patient.PatientName,

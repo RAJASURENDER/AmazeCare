@@ -2,6 +2,9 @@
 {
     public class DoctorViewAppointmentDTO
     {
+        /// <summary>
+        /// DTO for Details viewed by Doctor with Appointment Id (View Appointment by Doctor)
+        /// </summary>
         public int AppointmentId { get; set; }
         public string? PatientName { get; set; }
         public string? ContactNumber { get; set; }

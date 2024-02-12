@@ -2,6 +2,9 @@
 {
     public class LoginUserDTO
     {
+        /// <summary>
+        /// Login DTO using Username and Password
+        /// </summary>
 
         public string Username { get; set; }
         public string Password { get; set; }
