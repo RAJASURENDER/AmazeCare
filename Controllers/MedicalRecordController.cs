@@ -20,6 +20,11 @@ namespace AmazeCare.Controllers
             _medicalRecordService = medicalRecordService;
         }
 
+        /// <summary>
+        /// Gets all medical records
+        /// </summary>
+        /// <returns>List of medical records</returns>
+        /// 
         [Authorize(Roles = "Admin")]
         [Route("/View All MedicalRecords")]
         [HttpGet]
@@ -29,6 +34,13 @@ namespace AmazeCare.Controllers
             return medicalRecords;
         }
 
+
+        /// <summary>
+        /// Gets medical record by id
+        /// </summary>
+        /// <param name="id">Id of the medical record</param>
+        /// <returns>Medical record object</returns>
+        /// 
         [Authorize]
         [Route("/View MedicalRecord By Id")]
         [HttpGet]
@@ -37,6 +49,12 @@ namespace AmazeCare.Controllers
             var medicalRecord = await _medicalRecordService.GetMedicalRecordById(id);
             return medicalRecord;
         }
+
+        /// <summary>
+        /// Adds a medical record
+        /// </summary>
+        /// <param name="medicalRecords">Medical record object</param>
+        /// <returns>Added medical record object</returns>
 
         [Authorize(Roles = "Doctor")]
         [Route("Add MedicalRecord")]
@@ -48,7 +66,11 @@ namespace AmazeCare.Controllers
         }
 
 
-
+        /// <summary>
+        /// Gets medical record by appointment id
+        /// </summary>
+        /// <param name="Id">Id of the appointment</param>
+        /// <returns>List of medical records for the appointment</returns>
 
         [Authorize]
         [Route("/View MedicalRecord By AppointmentId")]
@@ -62,6 +84,12 @@ namespace AmazeCare.Controllers
 
         }
 
+        /// <summary>
+        /// Gets all medical records by patient id
+        /// </summary>
+        /// <param name="Id">Id of the patient</param>
+        /// <returns>List of medical records for the patient</returns>
+        /// 
 
         [Authorize(Roles = "Admin,Patient")]
         [Route("/View All MedicalRecords By PatientId")]

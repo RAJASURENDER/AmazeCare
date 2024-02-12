@@ -20,6 +20,12 @@ namespace AmazeCare.Controllers
             _userService = userService;
         }
 
+
+        /// <summary>
+        /// Returns a list of all doctors.
+        /// </summary>
+        /// <returns>A list of doctors.</returns>
+
         [Authorize]
         [Route("/View All Doctors")]
         [HttpGet]
@@ -28,6 +34,12 @@ namespace AmazeCare.Controllers
             var doctor = await _adminService.GetDoctorList();
             return doctor;
         }
+
+        /// <summary>
+        /// Returns a doctor by ID.
+        /// </summary>
+        /// <param name="id">The ID of the doctor to retrieve.</param>
+        /// <returns>The doctor with the specified ID.</returns>
 
         [Authorize(Roles ="Admin")]
         [Route("/View Doctor By Id")]
@@ -38,6 +50,13 @@ namespace AmazeCare.Controllers
             return doctor;
         }
 
+
+        /// <summary>
+        /// Adds a doctor to the system.
+        /// </summary>
+        /// <param name="doctor">The doctor to add.</param>
+        /// <returns>The added doctor.</returns>
+        /// 
         [Route("Add Doctor")]
         [HttpPost]
         public async Task<Doctors> PostDoctor(Doctors doctor)
@@ -46,6 +65,13 @@ namespace AmazeCare.Controllers
             return doctor;
         }
 
+
+        /// <summary>
+        /// Updates a doctor's experience.
+        /// </summary>
+        /// <param name="doctorDTO">The doctor's experience to update.</param>
+        /// <returns>The updated doctor.</returns>
+        /// 
         [Authorize(Roles = "Admin")]
         [Route("/Update Experience Of The Doctor")]
         [HttpPut]
@@ -54,6 +80,12 @@ namespace AmazeCare.Controllers
             var doctor = await _adminService.UpdateDoctorExperience(doctorDTO.Id,doctorDTO.Experience);
             return doctor;
         }
+
+        /// <summary>
+        /// Updates a doctor's qualification.
+        /// </summary>
+        /// <param name="doctorDTO">The doctor's qualification to update.</param>
+        /// <returns>The updated doctor.</returns>
 
         [Authorize(Roles = "Admin")]
         [Route("/Update Qualification Of The Doctor")]
@@ -65,6 +97,12 @@ namespace AmazeCare.Controllers
            doctorDTO.Qualification);
             return doctor;
         }
+        // <summary>
+        /// Updates a doctor's information.
+        /// </summary>
+        /// <param name="doctors">The updated doctor information.</param>
+        /// <returns>The updated doctor.</returns>
+        /// 
 
         [Authorize(Roles = "Admin")]
         [Route("/Update whole Of The Doctor")]
@@ -77,6 +115,12 @@ namespace AmazeCare.Controllers
             return doctor;
         }
 
+
+        /// <summary>
+        /// Delete a doctor from the Application.
+        /// </summary>
+        /// <param name="id">The ID of the doctor to delete.</param>
+        /// <returns
         [Authorize(Roles = "Admin")]
         [Route("/Delete Doctor")]
         [HttpDelete]

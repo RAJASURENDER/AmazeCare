@@ -20,7 +20,13 @@ namespace AmazeCare.Controllers
             _appointmentUserService = appointmentUserService;
         }
 
+        // <summary>
+        /// Retrieve all appointments (for Admin only).
+        /// </summary>
+        /// <returns>All the appointments/returns>
+
         [Authorize(Roles = "Admin")]
+        
         [Route("View All The Appointments")] //admin
         [HttpGet]
         public async Task<List<Appointments>> GetAppointment()
@@ -28,8 +34,12 @@ namespace AmazeCare.Controllers
             var appointment = await _appointmentAdminService.GetAppointmentList();
             return appointment;
         }
-
-
+        // <summary>
+        /// Gets an appointment by its id.
+        /// </summary>
+        /// <param name="id">The id of the appointment to get.</param>
+        /// <returns>The appointment with the specified id.</returns>
+        [Authorize]
         [Route("/View Appointment By AppointmentId")]
         [HttpGet]
         public async Task<Appointments> GetAppointmentById(int id)
@@ -37,6 +47,11 @@ namespace AmazeCare.Controllers
             var appointment = await _appointmentUserService.GetAppointment(id);
             return appointment;
         }
+        /// <summary>
+        /// Books an appointment for a patient.
+        /// </summary>
+        /// <param name="appointment">The appointment to book.</param>
+        /// <returns>The booked appointment.</returns>
 
         [Authorize(Roles = "Patient")]
         [Route("/Book An Appointment")]
@@ -47,17 +62,29 @@ namespace AmazeCare.Controllers
             return appointment;
         }
 
+        /// <summary>
+        /// Updates the doctor id in an appointment.
+        /// </summary>
+        /// <param name="appointmentDTO">The appointment data transfer object.</param>
+        /// <returns>The updated appointment.</returns>
+
         [Authorize(Roles = "Admin")]
         [Route("/Update DoctorId In Appointments")]
         [HttpPut]
-        public async Task<Appointments> UpdateAppointmentDoctor(AppointmentDoctorDTO
-       appointmentDTO)
+        public async Task<Appointments> UpdateAppointmentDoctor(AppointmentDoctorDTO appointmentDTO)
         {
             var appointment = await
            _appointmentAdminService.UpdateAppointmentDoctor(appointmentDTO.Id,
            appointmentDTO.DoctorId);
             return appointment;
         }
+
+
+        /// <summary>
+        /// Reschedules an appointment.
+        /// </summary>
+        /// <param name="appointmentDTO">The appointment data transfer object.</param>
+        /// <returns>The updated appointment.</returns>
 
         [Authorize]
         [Route("/Reschedule Appointment")]
@@ -82,6 +109,8 @@ namespace AmazeCare.Controllers
         //     return appointment;
         // }
 
+
+        
         [Authorize(Roles ="Patient")]
         [Route("/Cancel Appointment")] //patient
         [HttpDelete]
@@ -92,6 +121,13 @@ namespace AmazeCare.Controllers
             return appointment;
         }
 
+
+        /// <summary>
+        /// Gets all appointments for a doctor.
+        /// </summary>
+        /// <param name="doctorId">The id of the doctor.</param>
+        /// <returns>A list of appointments for the doctor.</returns>
+        /// 
 
         [Authorize(Roles = "Admin,Doctor")]
         [Route("/View Appointments By DoctorId")]
@@ -104,6 +140,12 @@ namespace AmazeCare.Controllers
 
         }
 
+        /// <summary>
+        /// Gets all appointments for a patient.
+        /// </summary>
+        /// <param name="patientId">The id of the patient.</param>
+        /// <returns>A list of appointments for the patient.</returns>
+
         [Authorize(Roles = "Admin,Patient")]
         [Route("/View Appointments By PatientId")]
         [HttpGet]
@@ -115,6 +157,12 @@ namespace AmazeCare.Controllers
 
         }
 
+        /// <summary>
+        /// Gets all Upcoming appointments.
+        /// </summary>
+        
+        /// <returns>A list of the Upcoming appointments</returns>
+
         [Authorize(Roles = "Admin")]
         [Route("/View All UPCOMING Appointments")]
         [HttpGet]
@@ -123,6 +171,13 @@ namespace AmazeCare.Controllers
             var appointment = await _appointmentAdminService.GetUpcomingAppointments();
             return appointment;
         }
+
+
+        /// <summary>
+        /// Changing the Status of an Appointment.
+        /// </summary>
+        /// <param name="appointmentDTO">The id of the patient.</param>
+        /// <returns>A list of appointments for the patient.</returns>
 
         [Authorize(Roles = "Admin,Doctor")]
         [Route("/CHANGE APPOINTMENT STATUS")]

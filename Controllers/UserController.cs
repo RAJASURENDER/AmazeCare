@@ -19,6 +19,12 @@ namespace AmazeCare.Controllers
             _userService = userService;
             _logger = logger;
         }
+        
+        /// <summary>
+        /// Registeration for Patient User
+        /// </summary>
+        /// <param name="user">New Added patient</param>
+        /// <returns>Newely Added Patient</returns>
 
         [Route("/Register Patient")]
         [HttpPost]
@@ -27,6 +33,11 @@ namespace AmazeCare.Controllers
             var result = await _userService.RegisterPatient(user);
             return result;
         }
+        /// <summary>
+        /// Registeration for Doctor User
+        /// </summary>
+        /// <param name="user">New Added Doctor</param>
+        /// <returns>Newely Added Doctor</returns>
 
         [Route("/Register Doctor")]
         [HttpPost]
@@ -36,6 +47,11 @@ namespace AmazeCare.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Patient, Doctor and Admin Login
+        /// </summary>
+        /// <param name="user">Patient, Doctor and Admin Login</param>
+        /// <returns>Newely LoggedIn User</returns>
 
         [Route("/Login")]
         [HttpPost]

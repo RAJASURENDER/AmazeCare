@@ -18,6 +18,11 @@ namespace AmazeCare.Controllers
             _prescriptionService = prescriptionService;
         }
 
+        /// <summary>
+        /// Gets the list of all prescriptions.
+        /// </summary>
+        /// <returns>List of prescriptions</returns>
+
         [Authorize(Roles = "Admin")]
         [Route("View All Prescriptions")]
         [HttpGet]
@@ -27,6 +32,11 @@ namespace AmazeCare.Controllers
             return prescriptions;
         }
 
+        /// <summary>
+        /// Gets the prescription by record id.
+        /// </summary>
+        /// <param name="id">The id of the prescription record.</param>
+        /// <returns>The prescription record</returns>
 
         [Authorize(Roles = "Patient")]
         [Route("/View Prescription  By RecordId")]
@@ -37,6 +47,12 @@ namespace AmazeCare.Controllers
             return prescription;
         }
 
+        /// <summary>
+        /// Adds a new prescription.
+        /// </summary>
+        /// <param name="prescriptions">The prescription details.</param>
+        /// <returns>Added prescription details</returns>
+
         [Authorize(Roles = "Doctor")]
         [Route("Add Prescription")]
         [HttpPost]
@@ -46,6 +62,11 @@ namespace AmazeCare.Controllers
             return prescriptions;
         }
 
+        /// <summary>
+        /// Updates the prescription.
+        /// </summary>
+        /// <param name="prescriptions"> The Updated Prescription Details </param>
+        /// <returns>The Updted Prescription Details</returns>
 
         [Authorize(Roles = "Doctor")]
         [Route("/Update whole Prescription")]

@@ -20,6 +20,11 @@ namespace AmazeCare.Controllers
             _userService = userService;
         }
 
+        /// <summary>
+        /// Gets the list of all patients.
+        /// </summary>
+        /// <returns>A list of patients.</returns>
+        /// 
         [Authorize(Roles = "Admin")]
         [Route("/View All Patients")]
         [HttpGet]
@@ -30,8 +35,12 @@ namespace AmazeCare.Controllers
             return patient;
         }
 
+        /// <summary>
+        /// Gets the patient details by ID.
+        /// </summary>
+        /// <param name="id">The ID of the patient.</param>
+        /// <returns>The patient details.</returns>
 
-      
         [Authorize]
         [Route("/View Patient By Id")]
         [HttpGet]
@@ -41,16 +50,27 @@ namespace AmazeCare.Controllers
             return patient;
         }
 
+        /// <summary>
+        /// Adds a new patient.
+        /// </summary>
+        /// <param name="patient">The patient details.</param>
+        /// <returns>The added patient details.</returns>
 
         [Authorize(Roles = "Admin")]
         [Route("Add Patient")]
-
         [HttpPost]
         public async Task<Patients> PostPatient(Patients patient)
         {
             patient = await _adminService.AddPatient(patient);
             return patient;
         }
+
+        /// <summary>
+        /// Updates the age of the patient.
+        /// </summary>
+        /// <param name="patientDTO">The patient DTO containing the ID and new age.</param>
+        /// <returns>The updated patient details.</returns>
+        /// 
 
         [Authorize(Roles = "Patient,Admin")]
         [Route("/Update Patient Age")]
@@ -60,6 +80,12 @@ namespace AmazeCare.Controllers
             var patient = await _adminService.UpdatePatientAge(patientDTO.Id, patientDTO.Age);
             return patient;
         }
+
+        /// <summary>
+        /// Updates the mobile number of the patient.
+        /// </summary>
+        /// <param name="patientDTO">The patient DTO containing the ID and new mobile number.</param>
+        /// <returns>The updated patient details.</returns>
 
         [Authorize(Roles = "Patient,Admin")]
         [Route("Update Mobile Number")]
@@ -71,6 +97,12 @@ namespace AmazeCare.Controllers
             return patient;
         }
 
+        /// <summary>
+        /// Delete the patient from database.
+        /// </summary>
+        /// <param name="id">The ID of the patient to delete.</param>
+        /// <returns>The deleted patient details.</returns>
+
         [Authorize(Roles = "Patient,Admin")]
         [Route("Delete Patient")]
         [HttpDelete]
@@ -80,6 +112,12 @@ namespace AmazeCare.Controllers
             return patient;
         }
 
+        /// <summary>
+        /// Updates the whole patient details.
+        /// </summary>
+        /// <param name="patients">The updated patient details.</param>
+        /// <returns>The updated patient details.</returns>
+        /// 
 
         [Authorize(Roles = "Patient,Admin")]
         [Route("/Update whole Of The Patient")]
