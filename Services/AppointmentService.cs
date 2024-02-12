@@ -174,5 +174,18 @@ namespace AmazeCare.Services
             }
             return null;
         }
+
+        public async Task<Appointments> CancelAppointment(int appointmentId)
+        {
+            var appointment = await _repo.GetAsync(appointmentId);
+            if (appointment != null)
+            {
+                appointment.Status = "Cancelled";
+
+                appointment = await _repo.Update(appointment);
+                return appointment;
+            }
+            return null;
+        }
     }
 }

@@ -42,15 +42,15 @@ namespace AmazeCare.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
-        [Route("Add Patient")]
+        //[Authorize(Roles = "Admin")]
+        //[Route("Add Patient")]
 
-        [HttpPost]
-        public async Task<Patients> PostPatient(Patients patient)
-        {
-            patient = await _adminService.AddPatient(patient);
-            return patient;
-        }
+        //[HttpPost]
+        //public async Task<Patients> PostPatient(Patients patient)
+        //{
+        //    patient = await _adminService.AddPatient(patient);
+        //    return patient;
+        //}
 
         [Authorize(Roles = "Patient,Admin")]
         [Route("/Update Patient Age")]

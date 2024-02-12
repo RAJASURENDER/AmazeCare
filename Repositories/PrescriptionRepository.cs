@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AmazeCare.Repositories
 {
-    public class PrescriptionRepository :IRepository<int, Prescriptions>
+    public class PrescriptionRepository :IRepository<int, Prescriptions>, IPrescriptionRepository
     {
 
         RequestTrackerContext _context;
@@ -54,6 +54,15 @@ namespace AmazeCare.Repositories
             return prescriptions;
 
        
+        }
+
+        public async Task<List<Prescriptions>> GetByRecordIdAsync(int recordId)
+        {
+            var prescriptions = _context.Prescriptions
+                            .Where(p => p.RecordId == recordId)
+                            .ToList();
+
+            return prescriptions;
         }
 
         public async Task<Prescriptions> Update(Prescriptions item)

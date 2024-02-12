@@ -38,13 +38,13 @@ namespace AmazeCare.Controllers
             return doctor;
         }
 
-        [Route("Add Doctor")]
-        [HttpPost]
-        public async Task<Doctors> PostDoctor(Doctors doctor)
-        {
-            doctor = await _adminService.AddDoctor(doctor);
-            return doctor;
-        }
+        //[Route("Add Doctor")]
+        //[HttpPost]
+        //public async Task<Doctors> PostDoctor(Doctors doctor)
+        //{
+        //    doctor = await _adminService.AddDoctor(doctor);
+        //    return doctor;
+        //}
 
         [Authorize(Roles = "Admin")]
         [Route("/Update Experience Of The Doctor")]

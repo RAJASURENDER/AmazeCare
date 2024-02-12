@@ -11,5 +11,9 @@ namespace AmazeCare.Interfaces
         public Task<Prescriptions> GetPrescriptionById(int id);
 
         public Task<Prescriptions> UpdatePrescription(Prescriptions prescriptions);
+
+        public Task<List<Prescriptions>> GetPrescriptionsByRecordId(int recordId);
+
+        
     }
 }

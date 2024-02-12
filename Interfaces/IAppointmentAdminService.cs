@@ -22,5 +22,7 @@ namespace AmazeCare.Interfaces
         public  Task<Appointments> UpdateAppointmentStatus(int appointmentId, string Status);
 
         public Task<List<Appointments>> GetUpcomingAppointments();
+
+        public Task<Appointments> CancelAppointment(int appointmentId);
     }
 }

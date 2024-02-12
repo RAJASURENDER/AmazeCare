@@ -82,7 +82,10 @@ namespace AmazeCare
             builder.Services.AddScoped<IRepository<int, Appointments>, AppointmentRepository>();
             builder.Services.AddScoped<IRepository<int, MedicalRecords>, MedicalRecordRepository>();
             builder.Services.AddScoped<IRepository<int, Prescriptions>, PrescriptionRepository>();
+            builder.Services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
             builder.Services.AddScoped<IRepository<string, User>, UserRepository>();
+
+           
 
             builder.Services.AddScoped<IDoctorAdminService, DoctorService>();
             builder.Services.AddScoped<IPatientAdminService, PatientService>();
