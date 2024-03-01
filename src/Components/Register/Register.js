@@ -1,13 +1,12 @@
 import  { useState } from "react"; // Importing React and useState hook
 import axios from 'axios'; // Importing axios for API requests
-import './Register.css';
+// import './Register.css';
 import {Link} from "react-router-dom";
 
 // Defining the Register component
 function Register() {
-    // State variables for form inputs
-    // const keyword, setusername etc is Setter function of React Hook usestate, [username, setUsername]: This syntax is called array destructuring,
-    const [username, setUsername] = useState(""); // this line of code is declaring a state variable username with an initial value of an empty string, and a setter function setUsername that can be used to update the username state. and same goes for Every variables
+    
+    const [username, setUsername] = useState(""); 
     const [password, setPassword] = useState("");
     const [patientName, setPatientName] = useState("");
     const [age, setAge] = useState("");
@@ -69,19 +68,15 @@ function Register() {
         validateDateOfBirth();
         validateContactNumber();
 
-        // Check if any field has an error
-        //If the condition is true, return; is called, which exits This means that if there are any errors 
-        //in the form any error messages are displayed and it stop the registration process till the errors are fixed
 
         if (usernameError || passwordError || patientNameError || ageError || genderError || dateOfBirthError || contactNumberError) {
             return;
         }
 
-        // Construct patient object with form data
         const patient = {
             username: username,
             password: password,
-            role: "Patient", // Role is hardcoded to "Patient"
+            role: "Patient",
             patientName: patientName,
             age: age,
             gender: gender,
@@ -89,41 +84,33 @@ function Register() {
             contactNumber: contactNumber
         };
 
-        // Log patient object to console
+
         console.log(patient);
 
-        // Send API request to register user
         try {
             const response = await axios.post("http://localhost:5244/RegisterPatient", patient);
 
             console.log(response);
             alert("Registration successful!"); // Display success message
-            window.location.href = "/patient-dashboard"; // Redirect to patient dashboard
+            window.location.href = "/login"; // Redirect to patient dashboard
         } catch (error) {
             console.log(error);
             alert("Registration failed. Please try again."); // Display error message
         }
     };
-
     
     return (
 
         <div className="register-page">
-            <nav className="Register-navbar navbar-expand-lg ">
-                <a className="Register-navbar-brand" href="/">
-                    <img src="images/logo-no-background.png" className="d-inline-block align-top" alt="" />
+            <nav className="navbarr">
+                <a className="navbar-brand" href="/">
+                    <img src="images/logo-no-background.png" className="img-fluid" alt="AMAZLogo" width="200" height="200" />
                 </a>
             </nav>
 
             <div className="register-container">
-                <div className="alert alert-success divregister ">
+                <div className="alert alert-success divregister">
                     <h1 className="heading-tag-h1"><strong>Sign Up</strong></h1>
-
-
-                    {/* Username input field */}
-                    {/* onBlur={validateUsername} This is used  to call the validate function when the field loses focus */}
-                    {/* onChange={(e) => setUsername(e.target.value)} It is  used to update the state of username when a change occurs in the input field. The value entered by User */}
-
                     <div className="form-group">
                         <label><i class="fa-solid fa-hospital-user"></i> Username</label>
                         <input className="form-control" type="text" value={username} onChange={(e) => setUsername(e.target.value)} onBlur={validateUsername} />
@@ -182,4 +169,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default Register;
